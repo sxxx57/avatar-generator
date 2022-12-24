@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>
+            Avatarr
+        </title>
+        <script>
+
+            window.onload= function(){
+                //eye
+                var eye = new Image();
+                var eyenum = Math.floor(Math.random()*6)+1;
+                var eyename = "eye"+ eyenum +".png";
+                eye.src=eyename;
+
+                //nose
+                var nose = new Image();
+                var nosenum = Math.floor(Math.random()*2)+1;
+                var nosename = "nose"+ nosenum +".png";
+                nose.src=nosename;
+
+                //mouth
+                var mouth = new Image();
+                var mouthnum = Math.floor(Math.random()*4)+1;
+                var mouthname = "mouth"+ mouthnum +".png";
+                mouth.src=mouthname;
+
+                nose.onload=function(){
+                    buildkami();
+                }
+                eye.onload=function(){
+                    buildkami();
+                }
+                mouth.onload=function(){
+                    buildkami();
+                }
+
+                function buildkami(){
+                    var canvas = document.getElementById('canvas1');
+                    var ctx=canvas.getContext('2d');
+                    canvas.width=400;
+                    canvas.height=400;
+
+                    ctx.drawImage(nose,((400-eye.width)/2),40);
+                    ctx.drawImage(eye,((400-eye.width)/2),-70);
+                    ctx.drawImage(mouth,((400-eye.width)/2),120);
+                }
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <div align="center">
+            <canvas id="canvas1" style="background: url('background.png')">
+
+            </canvas>
+            <br></br>
+            <button onClick="window.location.reload();">Generate</button>
+ 
+        </div>
+    </body>
+</html>
